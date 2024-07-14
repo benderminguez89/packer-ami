@@ -1,13 +1,16 @@
 data "git-commit" "cwd-head"{}
 data "amazon-ami" "source-ami" {
-    access_key = var.access_key
-    secret_key = var.secret_key
-    token = var.token
+  access_key = var.access_key
+  secret_key = var.secret_key
+  token = var.token
+
   filters = {
     virtualization_type = "hvm"
     name                = "*Ubuntu 22.04 LTS*"
     root-device-type    = "ebs"
+    architecture        = "arm64"
   }
+
   owners      = ["amazon"]
   most_recent = true
   region      = "us-east-1"
